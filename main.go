@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 	"time"
@@ -22,6 +23,11 @@ func index(w http.ResponseWriter, r *http.Request) {
 		wait = 2333 * time.Nanosecond
 	}
 	time.Sleep(wait)
+
+	fmt.Printf("Requested from %s: %s %s\n",
+		r.UserAgent(),
+		r.Method,
+		r.RequestURI)
 
 	w.Header().Set("Content-Type", "application/json")
 	//fmt.Fprintf(w, "%v: %v\n", r.Method, r.URL.Path)
