@@ -13,7 +13,7 @@ func main() {
 	h := http.NewServeMux()
 	h.HandleFunc("/ruok", index)
 
-	log.Fatal(http.ListenAndServe("127.0.0.1:8080", httptimer.Timed(h)))
+	log.Fatal(http.ListenAndServe(":8080", httptimer.Timed(h)))
 }
 
 func index(w http.ResponseWriter, r *http.Request) {
