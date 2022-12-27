@@ -13,7 +13,7 @@ type responseWriterWithTimer struct {
 	start           time.Time
 }
 
-func Timed(h http.Handler) http.handler {
+func Timed(h http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		h.ServeHTTP(&responseWriterWithTimer{w, false, time.Now()}, r)
 	})
